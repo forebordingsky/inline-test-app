@@ -1,5 +1,7 @@
 <?php
 
+(PHP_SAPI !== 'cli' || isset($_SERVER['HTTP_USER_AGENT'])) && die('CLI mod only.');
+
 require_once 'src/connection.php';
 
 $db->query('DROP DATABASE IF EXISTS ' . DB_NAME . ';');
