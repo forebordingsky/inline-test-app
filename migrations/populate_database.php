@@ -1,5 +1,7 @@
 <?php
 
+(PHP_SAPI !== 'cli' || isset($_SERVER['HTTP_USER_AGENT'])) && die('CLI mod only.');
+
 require_once 'src/connection.php';
 
 $db->query('USE '. DB_NAME);
@@ -18,8 +20,6 @@ function callApi(string $url)
 
 $postsUri = 'https://jsonplaceholder.typicode.com/posts';
 $commentsUri = 'https://jsonplaceholder.typicode.com/comments';
-
-
 
 $postsData = callApi($postsUri);
 
